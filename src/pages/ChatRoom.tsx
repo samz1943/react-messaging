@@ -29,7 +29,7 @@ function ChatRoom() {
     const newSocket = io('http://localhost:5000');
     setSocket(newSocket);
 
-    newSocket.on('receiveMessage-' + id, (newMessage: Message) => {
+    newSocket.on('receiveMessage', (newMessage: Message) => {
       console.log('New message received:', newMessage);
       setChatMessages((prevMessages) => [...prevMessages, newMessage]);
     });

@@ -52,7 +52,7 @@ function NavBar() {
                 onClick={toggleDropdown}
                 className="text-gray-300 hover:text-white transition-colors duration-200"
               >
-                {username} asdf
+                {username}
               </button>
             </div>
           ) : (
