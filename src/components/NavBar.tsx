@@ -1,13 +1,19 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 function NavBar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const isAuthenticated = Boolean(localStorage.getItem('token'));
-  const username = useSelector((state: RootState) => state.auth.username);
+  const isAuthenticated = Boolean(localStorage.getItem('auth'));
+  const [username, setUsername] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const authData = localStorage.getItem('auth');
+    if (authData) {
+      const parsedData = JSON.parse(authData);
+      setUsername(parsedData.username);
+    }
+  }, []);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -46,7 +52,7 @@ function NavBar() {
                 onClick={toggleDropdown}
                 className="text-gray-300 hover:text-white transition-colors duration-200"
               >
-                {username}
+                {username} asdf
               </button>
             </div>
           ) : (

@@ -2,15 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { login } from "../actions/authActions";
 
 interface AuthState {
-  username: string | null;
-  token: string | null;
+  auth: Object | null;
   loading: 'idle' | 'pending' | 'succeeded' | 'failed';
   error: string | null;
 }
 
 const initialState: AuthState = {
-  username: null,
-  token: null,
+  auth: null,
   loading: 'idle',
   error: null,
 };
@@ -27,8 +25,7 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = 'succeeded';
-        state.username = action.payload.username;
-        state.token = action.payload.token;
+        state.auth = action.payload;
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = 'failed';

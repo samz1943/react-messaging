@@ -17,8 +17,7 @@ function Login() {
     const resultAction = await dispatch(login({ username, password }));
   
     if (login.fulfilled.match(resultAction)) {
-      const token = resultAction.payload.token;
-      localStorage.setItem('token', token);
+      localStorage.setItem('auth', JSON.stringify(resultAction.payload));
       navigate('/dashboard');
     }
   };

@@ -6,7 +6,7 @@ import FullLayout from '../components/FullLayout';
 import ChatRoom from '../pages/ChatRoom';
 
 function AppRoutes() {
-    const isAuthenticated = Boolean(localStorage.getItem('token'));
+    const isAuthenticated = Boolean(localStorage.getItem('auth'));
 
     const routes = useRoutes([
         {

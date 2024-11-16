@@ -1,7 +1,9 @@
+import { User } from "../user/User";
+
 export interface Message {
-    _id: string;
+    id: string;
     chatId: string;
-    senderId: string;
     content: string;
     timestamp: string;
+    sender: User;
 }
